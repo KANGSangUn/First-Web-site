@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta charset="UTF-8">
+    <title>상운이 게시판</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+
+
+    .btn.sharp {
+        border-radius:0;
+    }
+    .loginp{
+        position: relative;
+        width: 490px;
+        margin: 270px auto;
+        text-align: center;
+        background-color: #fffbee;
+        background-color: rgba( 255, 255, 255, 0.60 );
+    }
+</style>
+<body>
+<div class="loginp">
+    <h1>
+        어여들어와라. 춥다.
+    </h1>
+<form method="post" action="log.php">
+    <table class="table table-striped">
+        <tr><td>아이디</td><td><input type="text" name="id"></td></tr>
+        <tr><td>비밀번호</td><td><input type="password" name="pw"></td></tr>
+    </table>
+        <input type="submit" value="LOGIN" class="btn btn-info btn-lg sharp"> <input  class="btn btn-info btn-lg sharp" type="button" value="GUEST" onclick="location='board_list.php'">
+</form>
+</div>
+</body>
+</html>
