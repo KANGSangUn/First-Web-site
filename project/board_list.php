@@ -38,11 +38,14 @@
     .board_list {
         background-color: #d7eae8;
     }
+    .title_board {
+        color: #67b168;
+    }
 </style>
 
 
 <div class="all">
-<h1>상운이의 본심이 담겨있는 게시판</h1>
+<h1 class="title_board">상운이의 본심이 담겨있는 게시판</h1>
 
 
     <table class="table table-bordered" >
@@ -122,13 +125,41 @@ else{
 
 <div class="page_css">
 <ul class="pagination pagination-lg">
-<?php
-for($p1=0;$p1<$p_total_page_num;$p1++){
-    $p2 = $p1+1;
-        echo " <li><a aria-label=\"Previous\" onclick='location.href=\"board_list.php?\"+\"con=\"+\"$con&\"+\"select_text=\"+\"$select_text&\"+\"this_page=\"+$p1*10;'>$p2</a> </li>";
-}
-?></ul>
+    <nav>
+        <ul class="pagination">
+            <?php
+            $p1 = $this_page/10-2;
+            $p2 = $this_page/10-1;
+            $p3 = $this_page/10-0;
+            $p4 = $this_page/10+1;
+            $p5 = $this_page/10+2;
+            if($p3<=0){
+                echo "<li><a onclick='location.href=\"board_list.php?\"+\"con=\"+\"$con&\"+\"select_text=\"+\"$select_text&\"+\"this_page=\"+0;' aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></a></li>";
+            }else
+            echo "<li><a onclick='location.href=\"board_list.php?\"+\"con=\"+\"$con&\"+\"select_text=\"+\"$select_text&\"+\"this_page=\"+$p2*10;' aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></a></li>";
+            if($p_total_page_num>=5 && $this_page>30) {
+                echo " <li><a aria-label=\"Previous\" onclick='location.href=\"board_list.php?\"+\"con=\"+\"$con&\"+\"select_text=\"+\"$select_text&\"+\"this_page=\"+$p1*10;'>$p1</a></li>";
+                echo " <li><a aria-label=\"Previous\" onclick='location.href=\"board_list.php?\"+\"con=\"+\"$con&\"+\"select_text=\"+\"$select_text&\"+\"this_page=\"+$p2*10;'>$p2</a></li>";
+                echo " <li><a aria-label=\"Previous\" onclick='location.href=\"board_list.php?\"+\"con=\"+\"$con&\"+\"select_text=\"+\"$select_text&\"+\"this_page=\"+$p3*10;'>$p3</a></li>";
+                if($p4<$p_total_page_num)
+                    echo " <li><a aria-label=\"Previous\" onclick='location.href=\"board_list.php?\"+\"con=\"+\"$con&\"+\"select_text=\"+\"$select_text&\"+\"this_page=\"+$p4*10;'>$p4</a></li>";
+                if($p5<$p_total_page_num)
+                    echo " <li><a aria-label=\"Previous\" onclick='location.href=\"board_list.php?\"+\"con=\"+\"$con&\"+\"select_text=\"+\"$select_text&\"+\"this_page=\"+$p5*10;'>$p5</a></li>";
 
+            }else if($p_total_page_num>=5)
+            {
+                for($pp1=0;$pp1<5;$pp1++){
+                    $pp2 = $pp1+1;
+                    echo " <li><a aria-label=\"Previous\" onclick='location.href=\"board_list.php?\"+\"con=\"+\"$con&\"+\"select_text=\"+\"$select_text&\"+\"this_page=\"+$pp1*10;'>$pp2</a></li>";
+                }
+            }
+            if($p3>=$p_total_page_num){
+                echo "<li><a onclick='location.href=\"board_list.php?\"+\"con = \"+\"$con & \"+\"select_text = \"+\"$select_text&\"+\"this_page=\"+$p3*10;' aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>";
+            }else
+            echo "<li><a onclick='location.href=\"board_list.php?\"+\"con = \"+\"$con & \"+\"select_text = \"+\"$select_text&\"+\"this_page=\"+$p4*10;' aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>";
+            ?>
+        </ul>
+    </nav>
 <br>
     <button id="popbutton">글 작성</button>
     <div class="modal fade">
@@ -156,5 +187,6 @@ echo "<button onclick=location.href=\"loginout.php?\"+\"logout=\"+'out';>로그�
 </form>
 
 </html>
+
 
 
